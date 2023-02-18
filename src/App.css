@@ -1,0 +1,103 @@
+.hoverBlue:hover {
+	background-color: #4775ff;
+}
+
+.hoverYello:hover {
+	background-color: #ffc482;
+}
+
+.hoverGreen:hover {
+	background-color: #08a47c;
+}
+
+.hoverRed:hover {
+	background-color: #e74855;
+}
+
+.homePage {
+	background-color: #403f4c;
+	height: 92vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 2vh;
+}
+
+.menubar {
+	height: 7vh;
+	padding: 0.5vh;
+	background-color: #b3b3b3;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.MenuBarTitle {
+	color: black;
+	font-size: 6.5vh;
+	text-decoration: none;
+
+}
+
+.clock {
+	color: black;
+	font-size: 6.5vh;
+}
+
+.LogoutButton {
+	height: 6.5vh;
+	width: 6.5vh;
+}
+
+.BigBox {
+	height: 50%;
+	width: 30%;
+	background-color: #b3b3b3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 4vh;
+	text-decoration: none;
+	color: black;
+}
+
+.listProduct {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5vh;
+}
+
+.ProductManagementPage {
+	background-color: #403f4c;
+	padding: 2vh;
+	height: 88vh;
+	display: grid;
+	grid-template-columns: repeat(3, calc(96vw/3));
+	gap: 2vh;
+}
+
+.productButton {
+	background-color: #b3b3b3;
+	padding-left: 1vh;
+}
+
+.ProductManagementbox {
+	background-color: #b3b3b3;
+	grid-column: 2/4;
+	display: flex;
+	flex-direction: column;
+	gap: 4vh;
+}
+
+.ProductManagementboxTitle {
+	font-size: 8vh;
+	text-align: center;
+}
+
+.ProductManagementboxText {
+	font-size: 4vh;
+}
