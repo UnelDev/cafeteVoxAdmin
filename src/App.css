@@ -101,4 +101,42 @@
 .ProductManagementboxText {
 	padding-left: 2vh;
 	font-size: 4vh;
+	display: flex;
+	align-items: baseline;
+}
+
+.ProductManagementboxColor {
+	padding-left: 2vh;
+	font-size: 4vh;
+	display: flex;
+	align-items: baseline;
+
+}
+
+.ProductManagementText {
+	padding-left: 2vh;
+	padding-right: 2vh;
+	font-size: 4vh;
+	background-color: #b3b3b3;
+	border-style: none;
+	color: black;
+	width: 5vw;
+}
+
+.ProductManagementColor {
+	padding-left: 2vh;
+	padding-right: 2vh;
+	background-color: #b3b3b3;
+	height: 4vh;
+	color: black;
+	border-style: none;
+}
+
+.ProductManagementSaveButton {
+	background-color: #403f4c;
+	padding: 2vh;
+	width: min-content;
+	margin-left: 2vh;
+	font-size: 4vh;
+	color: white;
 }

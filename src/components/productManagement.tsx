@@ -1,13 +1,14 @@
 import { useState } from 'react';
 export default function ProductManagement() {
     let path = '/';
-    const [selected, setselected] = useState({ name: 'non selectionnée', stock: 0, startingStock: 0, price: 0, margin: 0, color: '#FFFFFF', type: 'product' });
+    const [selected, setselected] = useState({ name: 'non selectionnée', stock: 0, startingStock: 0, price: 0, margin: 0, color: '#ffffff', type: 'product' });
+    const [color, setColor] = useState(selected.color);
     const [ListProduct, setListProduct] = useState(createListProduct);
     function createListProduct() {
         const list = getProductList(path);
         const elementList = list.map((Element) => {
             if (Element.type === 'product') {
-                return (<div onClick={() => { setselected(Element as any) }} className='productButton'>
+                return (<div onClick={() => { setselected(Element as any); setColor(Element.color) }} className='productButton'>
                     {Element.name}
                 </div>)
             } else {
@@ -40,13 +41,14 @@ export default function ProductManagement() {
         </div>
         <div className="ProductManagementbox">
             <div className='ProductManagementboxTitle'>{selected.name}</div>
-            <div className='ProductManagementboxText'>prix: {selected.price}€</div>
-            <div className='ProductManagementboxText'>marge: {selected.margin}€</div>
-            <div className='ProductManagementboxText'>stock actuelle: {selected.stock}€</div>
-            <div className='ProductManagementboxText'>stock initial: {selected.startingStock}€</div>
-            <div className='ProductManagementboxText'>couleur: {selected.color}€</div>
+            <div className='ProductManagementboxText'>prix: <input type="text" className='ProductManagementText' placeholder={selected.price.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
+            <div className='ProductManagementboxText'>marge: <input type="text" className='ProductManagementText' placeholder={selected.margin.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
+            <div className='ProductManagementboxText'>stock actuelle: <input type="text" className='ProductManagementText' placeholder={selected.stock.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
+            <div className='ProductManagementboxText'>stock initial: <input type="text" className='ProductManagementText' placeholder={selected.startingStock.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
+            <div className='ProductManagementboxColor'>couleur: <input type="color" id='color' className='ProductManagementColor' value={color} onChange={(event) => { selected.color = event.target.value; setColor(event.target.value); console.log(event.target.value); }} />€</div>
+            <div className='ProductManagementSaveButton' onClick={() => { console.log('new ' + selected.name + ': ' + JSON.stringify(selected)); }}>sauvgarder</div>
         </div>
-    </div>)
+    </div >)
 }
 
 function getProductList(path: string) {
