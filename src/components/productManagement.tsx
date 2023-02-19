@@ -35,7 +35,7 @@ export default function ProductManagement() {
         return elementList;
 
     }
-    console.log(selected.price > selected.margin)
+
     return (<div className="ProductManagementPage">
         <div className="listProduct">
             {ListProduct}
@@ -43,17 +43,17 @@ export default function ProductManagement() {
         <div className="ProductManagementbox">
             <div className='ProductManagementboxTitle'>{selected.name}</div>
             <div className='managmentBox'>
-                <div className='ProductManagementboxText'>prix: <input type="text" className='ProductManagementText' placeholder={selected.price.toString()} onChange={(event) => { setselected({ ...selected, price: Number(event.target.value) }); console.log(selected); }} />€</div>
-                {selected.price - selected.margin > 0 ? '' : <div className='ProductManagementError'>⚠️ erreur detecter, les marge ne peuvent pas etre plus elever que le prix</div>}
+                <div className='ProductManagementboxText'>prix: <input type="text" className='ProductManagementText' placeholder={selected.price.toString()} onChange={(event) => { setselected({ ...selected, price: Number(event.target.value) }); }} />€</div>
+                {selected.price > selected.margin ? '' : <div className='ProductManagementError'>⚠️ erreur detecter, les marge ne peuvent pas etre plus elever que le prix</div>}
             </div>
-            <div className='ProductManagementboxText'>marge: <input type="text" className='ProductManagementText' placeholder={selected.margin.toString()} onChange={(event) => { setselected({ ...selected, margin: Number(event.target.value) }); console.log(selected); }} />€</div>
+            <div className='ProductManagementboxText'>marge: <input type="text" className='ProductManagementText' placeholder={selected.margin.toString()} onChange={(event) => { setselected({ ...selected, margin: Number(event.target.value) }); }} />€</div>
             <div className='managmentBox'>
-                <div className='ProductManagementboxText'>stock actuelle: <input type="text" className='ProductManagementText' placeholder={selected.stock.toString()} onChange={(event) => { setselected({ ...selected, stock: Number(event.target.value) }); console.log(selected); }} />produit</div>
-                {selected.stock - selected.startingStock > 0 ? <div className='ProductManagementError'>⚠️ erreur detecter, stock insufisant</div> : ''}
+                <div className='ProductManagementboxText'>stock actuelle: <input type="text" className='ProductManagementText' placeholder={selected.stock.toString()} onChange={(event) => { setselected({ ...selected, stock: Number(event.target.value) }); }} />produit</div>
+                {selected.stock > selected.startingStock ? <div className='ProductManagementError'>⚠️ erreur detecter, stock insufisant</div> : ''}
             </div>
-            <div className='ProductManagementboxText'>stock initial: <input type="text" className='ProductManagementText' placeholder={selected.startingStock.toString()} onChange={(event) => { setselected({ ...selected, startingStock: Number(event.target.value) }); console.log(selected); }} />produit</div>
-            <div className='ProductManagementboxColor'>couleur: <input type="color" id='color' className='ProductManagementColor' value={color} onChange={(event) => { setselected({ ...selected, color: event.target.value }); setColor(event.target.value); console.log(selected); }} />€</div>
-            <div className='ProductManagementSaveButton' onClick={() => { console.log('new ' + selected.name + ': ' + JSON.stringify(selected)); }}>sauvgarder</div>
+            <div className='ProductManagementboxText'>stock initial: <input type="text" className='ProductManagementText' placeholder={selected.startingStock.toString()} onChange={(event) => { setselected({ ...selected, startingStock: Number(event.target.value) }); }} />produit</div>
+            <div className='ProductManagementboxColor'>couleur: <input type="color" id='color' className='ProductManagementColor' value={color} onChange={(event) => { setselected({ ...selected, color: event.target.value }); setColor(event.target.value); }} />€</div>
+            <button className='ProductManagementSaveButton' disabled={selected.stock < selected.startingStock || selected.price < selected.margin} onClick={() => { console.log('new ' + selected.name + ': ' + JSON.stringify(selected)); }}>sauvgarder</button>
         </div>
     </div >)
 }
@@ -322,46 +322,6 @@ function getProductList(path: string) {
                 price: 1,
                 margin: 0.50,
                 color: '#0d3fb8',
-                type: 'product'
-
-            },
-            {
-                name: 'malteser',
-                stock: 2000,
-                startingStock: 2000,
-                price: 1,
-                margin: 0.50,
-                color: '#f21d25',
-                type: 'product'
-
-            },
-            {
-                name: 'nutela Biscuit',
-                stock: 2000,
-                startingStock: 2000,
-                price: 1,
-                margin: 0.50,
-                color: '#791d11',
-                type: 'product'
-
-            },
-            {
-                name: 'malteser',
-                stock: 2000,
-                startingStock: 2000,
-                price: 1,
-                margin: 0.50,
-                color: '#f21d25',
-                type: 'product'
-
-            },
-            {
-                name: 'nutela Biscuit',
-                stock: 2000,
-                startingStock: 2000,
-                price: 1,
-                margin: 0.50,
-                color: '#791d11',
                 type: 'product'
 
             },

@@ -139,6 +139,11 @@
 	margin-left: 2vh;
 	font-size: 4vh;
 	color: white;
+	border-style: none;
+}
+
+.ProductManagementSaveButton:disabled {
+	background-color: #727085;
 }
 
 .managmentBox {
