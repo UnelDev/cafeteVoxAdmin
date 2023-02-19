@@ -35,17 +35,24 @@ export default function ProductManagement() {
         return elementList;
 
     }
+    console.log(selected.price > selected.margin)
     return (<div className="ProductManagementPage">
         <div className="listProduct">
             {ListProduct}
         </div>
         <div className="ProductManagementbox">
             <div className='ProductManagementboxTitle'>{selected.name}</div>
-            <div className='ProductManagementboxText'>prix: <input type="text" className='ProductManagementText' placeholder={selected.price.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
-            <div className='ProductManagementboxText'>marge: <input type="text" className='ProductManagementText' placeholder={selected.margin.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
-            <div className='ProductManagementboxText'>stock actuelle: <input type="text" className='ProductManagementText' placeholder={selected.stock.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
-            <div className='ProductManagementboxText'>stock initial: <input type="text" className='ProductManagementText' placeholder={selected.startingStock.toString()} onChange={(event) => { selected.color = event.target.value; console.log(event.target.value); }} />€</div>
-            <div className='ProductManagementboxColor'>couleur: <input type="color" id='color' className='ProductManagementColor' value={color} onChange={(event) => { selected.color = event.target.value; setColor(event.target.value); console.log(event.target.value); }} />€</div>
+            <div className='managmentBox'>
+                <div className='ProductManagementboxText'>prix: <input type="text" className='ProductManagementText' placeholder={selected.price.toString()} onChange={(event) => { setselected({ ...selected, price: Number(event.target.value) }); console.log(selected); }} />€</div>
+                {selected.price - selected.margin > 0 ? '' : <div className='ProductManagementError'>⚠️ erreur detecter, les marge ne peuvent pas etre plus elever que le prix</div>}
+            </div>
+            <div className='ProductManagementboxText'>marge: <input type="text" className='ProductManagementText' placeholder={selected.margin.toString()} onChange={(event) => { setselected({ ...selected, margin: Number(event.target.value) }); console.log(selected); }} />€</div>
+            <div className='managmentBox'>
+                <div className='ProductManagementboxText'>stock actuelle: <input type="text" className='ProductManagementText' placeholder={selected.stock.toString()} onChange={(event) => { setselected({ ...selected, stock: Number(event.target.value) }); console.log(selected); }} />produit</div>
+                {selected.stock - selected.startingStock > 0 ? <div className='ProductManagementError'>⚠️ erreur detecter, stock insufisant</div> : ''}
+            </div>
+            <div className='ProductManagementboxText'>stock initial: <input type="text" className='ProductManagementText' placeholder={selected.startingStock.toString()} onChange={(event) => { setselected({ ...selected, startingStock: Number(event.target.value) }); console.log(selected); }} />produit</div>
+            <div className='ProductManagementboxColor'>couleur: <input type="color" id='color' className='ProductManagementColor' value={color} onChange={(event) => { setselected({ ...selected, color: event.target.value }); setColor(event.target.value); console.log(selected); }} />€</div>
             <div className='ProductManagementSaveButton' onClick={() => { console.log('new ' + selected.name + ': ' + JSON.stringify(selected)); }}>sauvgarder</div>
         </div>
     </div >)
@@ -113,7 +120,7 @@ function getProductList(path: string) {
                 stock: 2000,
                 startingStock: 2000,
                 price: 0.50,
-                margin: 0.25,
+                margin: 1,
                 color: '#7b4529',
                 type: 'product'
 
@@ -315,6 +322,46 @@ function getProductList(path: string) {
                 price: 1,
                 margin: 0.50,
                 color: '#0d3fb8',
+                type: 'product'
+
+            },
+            {
+                name: 'malteser',
+                stock: 2000,
+                startingStock: 2000,
+                price: 1,
+                margin: 0.50,
+                color: '#f21d25',
+                type: 'product'
+
+            },
+            {
+                name: 'nutela Biscuit',
+                stock: 2000,
+                startingStock: 2000,
+                price: 1,
+                margin: 0.50,
+                color: '#791d11',
+                type: 'product'
+
+            },
+            {
+                name: 'malteser',
+                stock: 2000,
+                startingStock: 2000,
+                price: 1,
+                margin: 0.50,
+                color: '#f21d25',
+                type: 'product'
+
+            },
+            {
+                name: 'nutela Biscuit',
+                stock: 2000,
+                startingStock: 2000,
+                price: 1,
+                margin: 0.50,
+                color: '#791d11',
                 type: 'product'
 
             },

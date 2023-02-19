@@ -74,7 +74,7 @@
 .ProductManagementPage {
 	background-color: #403f4c;
 	padding: 2vh;
-	height: 88vh;
+	min-height: 88vh;
 	display: grid;
 	grid-template-columns: repeat(3, calc(96vw/3));
 	gap: 2vh;
@@ -139,4 +139,14 @@
 	margin-left: 2vh;
 	font-size: 4vh;
 	color: white;
+}
+
+.managmentBox {
+	display: flex;
+	align-items: center;
+}
+
+.ProductManagementError {
+	font-size: 3vh;
+	margin-left: 2vh;
 }
